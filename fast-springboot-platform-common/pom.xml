@@ -11,5 +11,7 @@
 
     <artifactId>fast-springboot-platform-common</artifactId>
 
+    <dependencies>
 
+    </dependencies>
 </project>

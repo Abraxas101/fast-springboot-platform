@@ -21,6 +21,7 @@
         <java.version>1.8</java.version>
         <mybatis.plus.version>3.1.0</mybatis.plus.version>
         <druid.version>1.1.10</druid.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
     </properties>
 
     <modules>
@@ -41,6 +42,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
