@@ -2,6 +2,7 @@ package com.nwx.controller.system;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,16 +14,34 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: 系统管理
  * @Auther: Neil
  * @Date: 2019/4/23 20:51
  */
-@RestController
+@Controller
 public class SystemController {
 
     @Autowired
     DefaultKaptcha defaultKaptcha;
+
+    @RequestMapping("/login")
+    public String login(){
+
+        System.out.println("登陆页面....");
+
+        return "login.html";
+    }
+
+    @RequestMapping("/index")
+    public String index(){
+        return "index.html";
+    }
+
+    @RequestMapping("/main")
+    public String main(){
+        return "main.html";
+    }
 
     /**
      * @Author Neil

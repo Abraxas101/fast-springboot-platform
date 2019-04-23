@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: 系统角色
  * @Auther: Neil
  * @Date: 2019/4/23 17:24

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: 资源管理
  * @Auther: Neil
  * @Date: 2019/4/23 17:32

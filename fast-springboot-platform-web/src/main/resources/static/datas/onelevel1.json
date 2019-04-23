@@ -1,0 +1,29 @@
+[{
+    "title": "控制台",
+    "icon": "fa-circle-o",
+    "id": "1"
+}, {
+    "title": "商品管理",
+    "icon": "&#xe658;",
+    "id": "2"
+}, {
+    "title": "会员管理",
+    "icon": "fa-heartbeat",
+    "id": "3",
+    "children": [{
+        "id": "12",
+        "title": "Navbar",
+        "icon": "fa-table",
+        "url": "navbar.html"
+    }, {
+        "id": "13",
+        "title": "Tab",
+        "icon": "&#xe658;",
+        "url": "tab.html"
+    }, {
+        "id": "14",
+        "title": "app.js主入口",
+        "icon": "&#xe658;",
+        "url": "app.html"
+    }]
+}]

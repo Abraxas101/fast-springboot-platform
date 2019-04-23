@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.nwx.pojo.SysUser;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: user mapper
  * @Auther: Neil
  * @Date: 2019/4/23 17:15

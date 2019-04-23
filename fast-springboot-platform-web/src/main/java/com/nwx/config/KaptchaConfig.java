@@ -8,7 +8,7 @@ import com.google.code.kaptcha.util.Config;
 import java.util.Properties;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: 图形验证码
  * @Auther: Neil
  * @Date: 2019/4/23 20:51

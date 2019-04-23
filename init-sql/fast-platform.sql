@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
+Source Server         : 127.font-awesome.font-awesome.1
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : fast-platform
@@ -39,7 +39,7 @@ CREATE TABLE `sys_layui_table_cols` (
   `rowspan` int(11) DEFAULT NULL COMMENT '单元格所占行数(默认：1)。一般用于多级表头',
   `templet` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '自定义列模板',
   `toolbar` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT ' 绑定列工具条',
-  `STATUS` int(11) DEFAULT NULL COMMENT '是否为失效状态,0:失效，1：有效',
+  `STATUS` int(11) DEFAULT NULL COMMENT '是否为失效状态,font-awesome:失效，1：有效',
   `orders` int(5) DEFAULT NULL COMMENT '列表列的排序值',
   PRIMARY KEY (`col_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -72,7 +72,7 @@ CREATE TABLE `sys_layui_table_config` (
   `size` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT '用于设定表格尺寸，若使用默认尺寸不设置该属性即可',
   `done` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '数据渲染完的回调。你可以借此做一些其它的操作',
   `css_class` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT 'table的css的class',
-  `status` int(11) DEFAULT NULL COMMENT '是否为失效状态,0:失效，1：有效',
+  `status` int(11) DEFAULT NULL COMMENT '是否为失效状态,font-awesome:失效，1：有效',
   `tree_table` varchar(11) CHARACTER SET utf8 DEFAULT NULL COMMENT '是否为treeTable结构,true:是，false：否',
   `tag` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '为每个table组赋统一标识',
   PRIMARY KEY (`table_id`)
@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `sys_res`;
 CREATE TABLE `sys_res` (
   `RES_ID` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '主键ID',
   `RES_CODE` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '资源编码',
-  `PAR_RES_ID` varchar(50) COLLATE utf8_bin DEFAULT '0' COMMENT '父资源ID',
+  `PAR_RES_ID` varchar(50) COLLATE utf8_bin DEFAULT 'font-awesome' COMMENT '父资源ID',
   `RES_NAME` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '资源名称',
   `RES_ICON` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '资源图标',
   `RES_URL` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '资源地址',
@@ -139,7 +139,7 @@ CREATE TABLE `sys_role` (
   `ROLE_ORDER` int(11) DEFAULT NULL COMMENT '排序',
   `ROLE_NAME` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '角色名称',
   `TIPS` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '备注',
-  `STATUS` int(11) DEFAULT NULL COMMENT '状态,0:删除，1：正常',
+  `STATUS` int(11) DEFAULT NULL COMMENT '状态,font-awesome:删除，1：正常',
   `CREATE_USER` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
   `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
   `MODIFY_USER` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
@@ -151,7 +151,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '0', '超级管理员', null, '1', '1', '2019-04-23 20:22:20', null, null, 'systemManager');
+INSERT INTO `sys_role` VALUES ('1', 'font-awesome', '超级管理员', null, '1', '1', '2019-04-23 20:22:20', null, null, 'systemManager');
 
 -- ----------------------------
 -- Table structure for sys_role_res
@@ -165,7 +165,7 @@ CREATE TABLE `sys_role_res` (
   `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
   `MODIFY_USER` varchar(125) COLLATE utf8_bin NOT NULL COMMENT '修改人',
   `MODIFY_TIME` datetime DEFAULT NULL COMMENT '修改时间',
-  `STATUS` int(11) DEFAULT NULL COMMENT '状态(1：正常 0：删除）',
+  `STATUS` int(11) DEFAULT NULL COMMENT '状态(1：正常 font-awesome：删除）',
   PRIMARY KEY (`ROLE_RES_ID`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -189,13 +189,13 @@ CREATE TABLE `sys_user` (
   `MOBILE_PHONE` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '电话',
   `PHONE` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '办公电话',
   `STATUS` int(11) DEFAULT NULL COMMENT '状态(1：启用  2：冻结  3：删除）',
-  `ONLINE_STATUS` int(11) DEFAULT NULL COMMENT '在线状态1-在线 0-离线',
+  `ONLINE_STATUS` int(11) DEFAULT NULL COMMENT '在线状态1-在线 font-awesome-离线',
   `CREATE_USER` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
   `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
   `MODIFY_USER` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
   `MODIFY_TIME` datetime DEFAULT NULL COMMENT '修改时间',
   `SYS_SALT` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT 'MD5加密盐值',
-  `TYPE` int(11) DEFAULT NULL COMMENT '用户类型（0:系统管理，1:app用户）',
+  `TYPE` int(11) DEFAULT NULL COMMENT '用户类型（font-awesome:系统管理，1:app用户）',
   PRIMARY KEY (`USER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -216,7 +216,7 @@ CREATE TABLE `sys_user_role` (
   `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
   `MODIFY_USER` varchar(125) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
   `MODIFY_TIME` datetime DEFAULT NULL COMMENT '修改时间',
-  `STATUS` int(11) DEFAULT NULL COMMENT '状态(1：正常  0：删除）',
+  `STATUS` int(11) DEFAULT NULL COMMENT '状态(1：正常  font-awesome：删除）',
   PRIMARY KEY (`USER_ROLE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

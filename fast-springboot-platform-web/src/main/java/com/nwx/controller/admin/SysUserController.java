@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: 用户管理
  * @Auther: Neil
  * @Date: 2019/4/23 17:37

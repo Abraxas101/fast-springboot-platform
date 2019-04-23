@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @version : V1.0
+ * @version : V1.font-awesome
  * @Description: 项目启动
  * @Auther: Neil
  * @Date: 2019/4/23 17:34
