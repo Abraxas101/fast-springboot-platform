@@ -19,6 +19,12 @@ public class SysUserController {
     @Autowired
     private SysUserService userService;
 
+    @RequestMapping("/index")
+    public String index(){
+
+        return "";
+    }
+
     @RequestMapping("/test")
     public String test(){
 
