@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nwx.entity.common.SysLayuiTableCols;
 import com.nwx.mapper.common.SysLayuiTableColsMapper;
 import com.nwx.service.common.SysLayuiTableColsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @version : V1.0
@@ -15,4 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysLayuiTableColsServiceImpl extends ServiceImpl<SysLayuiTableColsMapper, SysLayuiTableCols> implements SysLayuiTableColsService {
 
+    @Autowired
+    private SysLayuiTableColsMapper sysLayuiTableColsMapper;
+
+    @Override
+    public List<SysLayuiTableCols> findColsByTableCode(String tableCode) {
+        return sysLayuiTableColsMapper.findColsByTableCode(tableCode);
+    }
 }

@@ -1,10 +1,6 @@
-package com.nwx.entity.common;
+package com.nwx.tag.model;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.nwx.tag.model.Table;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,18 +9,15 @@ import java.util.Set;
 
 /**
  * @version : V1.0
- * @Description: layui表格配置信息
+ * @Description: 表格
  * @Auther: Neil
- * @Date: 2019/4/25 10:58
+ * @Date: 2019/4/25 11:21
  */
-@TableName("SYS_LAYUI_TABLE_CONFIG")
-public class SysLayuiTableConfig extends Model {
+public class Table {
 
-    @TableId("TABLE_ID")
-    private String tableId;
     private String elem;
     private String url;
-    private List<SysLayuiTableCols> cols;
+    private List<TableCols> cols;
     private String width;
     private String height;
     private Integer cellMinWidth = 80;
@@ -42,14 +35,14 @@ public class SysLayuiTableConfig extends Model {
     private boolean treeTable = false;
     private String tag;
 
-    public SysLayuiTableConfig(JSONObject json) {
+    public Table(JSONObject json) {
         Set<String> key = json.keySet();
-        List<SysLayuiTableCols> list = new ArrayList();
+        List<TableCols> list = new ArrayList();
         Iterator iterator = key.iterator();
 
         while(iterator.hasNext()) {
             String next = (String)iterator.next();
-            SysLayuiTableCols col = new SysLayuiTableCols();
+            TableCols col = new TableCols();
             col.setField(next);
             col.setTitle(json.getString(next));
             list.add(col);
@@ -58,15 +51,7 @@ public class SysLayuiTableConfig extends Model {
         this.setCols(list);
     }
 
-    public SysLayuiTableConfig() {
-    }
-
-    public String getTableId() {
-        return tableId;
-    }
-
-    public void setTableId(String tableId) {
-        this.tableId = tableId;
+    public Table() {
     }
 
     public static Table me() {
@@ -89,11 +74,11 @@ public class SysLayuiTableConfig extends Model {
         this.url = url;
     }
 
-    public List<SysLayuiTableCols> getCols() {
+    public List<TableCols> getCols() {
         return this.cols;
     }
 
-    public void setCols(List<SysLayuiTableCols> cols) {
+    public void setCols(List<TableCols> cols) {
         this.cols = cols;
     }
 

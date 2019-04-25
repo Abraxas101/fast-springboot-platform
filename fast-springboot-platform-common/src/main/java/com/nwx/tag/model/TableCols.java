@@ -1,19 +1,20 @@
-package com.nwx.entity.common;
+package com.nwx.tag.model;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.alibaba.fastjson.JSONObject;
+import com.nwx.execption.SystemException;
+
+import java.lang.reflect.Field;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * @version : V1.0
- * @Description: layui表格字段配置类
+ * @Description: 表格字段信息
  * @Auther: Neil
- * @Date: 2019/4/25 10:56
+ * @Date: 2019/4/25 11:21
  */
-@TableName("SYS_LAYUI_TABLE_COLS")
-public class SysLayuiTableCols extends Model{
+public class TableCols {
 
-    @TableId("field")
     private String field;
     private String title;
     private String width;
@@ -32,8 +33,44 @@ public class SysLayuiTableCols extends Model{
     private String templet;
     private String toolbar;
 
+    public TableCols() {
+    }
+
+    public TableCols(String json) {
+        this(JSONObject.parseObject(json));
+    }
+
+    public TableCols(JSONObject json) {
+        Set<String> key = json.keySet();
+        Iterator iterator = key.iterator();
+
+        while(iterator.hasNext()) {
+            String next = (String)iterator.next();
+            Field[] fields = this.getClass().getDeclaredFields();
+
+            for(int i = 0; i < fields.length; ++i) {
+                fields[i].setAccessible(true);
+
+                try {
+                    if (fields[i].getName().equals(next)) {
+                        if (fields[i].getType().getName().equals("java.lang.String")) {
+                            fields[i].set(this, json.getString(next));
+                        } else if (fields[i].getType().getName().equals("java.lang.Integer")) {
+                            fields[i].set(this, json.getInteger(next));
+                        } else if (fields[i].getType().getName().equals("java.lang.Boolean")) {
+                            fields[i].set(this, json.getBoolean(next));
+                        }
+                    }
+                } catch (Exception var8) {
+                    throw new SystemException("表格组件信息异常");
+                }
+            }
+        }
+
+    }
+
     public String getField() {
-        return field;
+        return this.field;
     }
 
     public void setField(String field) {
@@ -41,7 +78,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -49,7 +86,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getWidth() {
-        return width;
+        return this.width;
     }
 
     public void setWidth(String width) {
@@ -57,7 +94,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public Integer getMinWidth() {
-        return minWidth;
+        return this.minWidth;
     }
 
     public void setMinWidth(Integer minWidth) {
@@ -65,7 +102,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
     public void setType(String type) {
@@ -73,15 +110,15 @@ public class SysLayuiTableCols extends Model{
     }
 
     public Boolean getLAY_CHECKED() {
-        return LAY_CHECKED;
+        return this.LAY_CHECKED;
     }
 
-    public void setLAY_CHECKED(Boolean LAY_CHECKED) {
-        this.LAY_CHECKED = LAY_CHECKED;
+    public void setLAY_CHECKED(Boolean lAY_CHECKED) {
+        this.LAY_CHECKED = lAY_CHECKED;
     }
 
     public String getFixed() {
-        return fixed;
+        return this.fixed;
     }
 
     public void setFixed(String fixed) {
@@ -89,7 +126,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public Boolean getSort() {
-        return sort;
+        return this.sort;
     }
 
     public void setSort(Boolean sort) {
@@ -97,7 +134,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public Boolean getUnresize() {
-        return unresize;
+        return this.unresize;
     }
 
     public void setUnresize(Boolean unresize) {
@@ -105,7 +142,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getEdit() {
-        return edit;
+        return this.edit;
     }
 
     public void setEdit(String edit) {
@@ -113,7 +150,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getEvent() {
-        return event;
+        return this.event;
     }
 
     public void setEvent(String event) {
@@ -121,7 +158,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getStyle() {
-        return style;
+        return this.style;
     }
 
     public void setStyle(String style) {
@@ -129,7 +166,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getAlign() {
-        return align;
+        return this.align;
     }
 
     public void setAlign(String align) {
@@ -137,7 +174,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public Integer getColspan() {
-        return colspan;
+        return this.colspan;
     }
 
     public void setColspan(Integer colspan) {
@@ -145,7 +182,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public Integer getRowspan() {
-        return rowspan;
+        return this.rowspan;
     }
 
     public void setRowspan(Integer rowspan) {
@@ -153,7 +190,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getTemplet() {
-        return templet;
+        return this.templet;
     }
 
     public void setTemplet(String templet) {
@@ -161,7 +198,7 @@ public class SysLayuiTableCols extends Model{
     }
 
     public String getToolbar() {
-        return toolbar;
+        return this.toolbar;
     }
 
     public void setToolbar(String toolbar) {

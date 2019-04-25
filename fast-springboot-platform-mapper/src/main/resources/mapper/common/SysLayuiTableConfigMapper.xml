@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nwx.mapper.common.SysLayuiTableConfigMapper">
+    <resultMap id="tableConfig" type="com.nwx.entity.common.SysLayuiTableConfig"/>
+    <parameterMap id="tableConfig" type="com.nwx.entity.common.SysLayuiTableConfig"/>
+
+    <select id="findByCode" resultMap="tableConfig" parameterType="String">
+        select * from sys_layui_table_config t
+        where t.table_code = #{tableCode}
+    </select>
+</mapper>
