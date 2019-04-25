@@ -1,10 +1,13 @@
 package com.nwx.controller.admin;
 
-import com.nwx.pojo.SysUser;
-import com.nwx.service.SysUserService;
+import com.nwx.common.DataTable;
+import com.nwx.entity.admin.SysUser;
+import com.nwx.service.admin.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @version : V1.font-awesome
@@ -26,10 +29,12 @@ public class SysUserController {
     }
 
     @RequestMapping("/test")
-    public String test(){
+    public DataTable test(){
+//        IPage<SysUser> page = userService.page(new Page<SysUser>(1, 10), new QueryWrapper<>());
+//        return new DataTable(page.getTotal(), page.getRecords());
 
-        SysUser sysUser = userService.findById("1");
+        List<SysUser> userList = userService.getUserList();
 
-        return sysUser.toString();
+        return new DataTable(1L, userList);
     }
 }

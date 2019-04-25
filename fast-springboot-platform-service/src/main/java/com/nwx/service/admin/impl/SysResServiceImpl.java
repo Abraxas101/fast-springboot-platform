@@ -1,7 +1,9 @@
-package com.nwx.service.impl;
+package com.nwx.service.admin.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.nwx.entity.admin.SysRes;
 import com.nwx.mapper.admin.SysResMapper;
-import com.nwx.service.SysResService;
+import com.nwx.service.admin.SysResService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @Date: 2019/4/23 17:32
  */
 @Service
-public class SysResServiceImpl implements SysResService {
+public class SysResServiceImpl extends ServiceImpl<SysResMapper, SysRes> implements SysResService {
 
     @Autowired
     private SysResMapper resMapper;

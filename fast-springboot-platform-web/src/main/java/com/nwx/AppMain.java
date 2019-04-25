@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2019/4/23 17:34
  */
 @SpringBootApplication
-@MapperScan("com.nwx.mapper")
 public class AppMain {
 
     public static void main(String[] args) {

@@ -24,6 +24,21 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*/**Mapper.xml
+  typeAliasesPackage: com.nwx.entity
+  global-config:
+    db-config:
+      db-column-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+logging:
+  level:
+    com:
+      nwx:
+        mapper: debug
+
 beetl:
   templatesPath: templates
 beetlsql:

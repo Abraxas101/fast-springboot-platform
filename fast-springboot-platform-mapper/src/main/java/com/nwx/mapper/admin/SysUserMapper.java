@@ -1,7 +1,9 @@
 package com.nwx.mapper.admin;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nwx.pojo.SysUser;
+import com.nwx.entity.admin.SysUser;
+
+import java.util.List;
 
 /**
  * @version : V1.font-awesome
@@ -10,4 +12,6 @@ import com.nwx.pojo.SysUser;
  * @Date: 2019/4/23 17:15
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {
+
+    public List<SysUser> getUserList();
 }

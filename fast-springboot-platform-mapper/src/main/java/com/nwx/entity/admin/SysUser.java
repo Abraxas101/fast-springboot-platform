@@ -1,9 +1,9 @@
-package com.nwx.pojo;
+package com.nwx.entity.admin;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Date;
  * @Date: 2019/4/23 17:16
  */
 @TableName("SYS_USER")
-public class SysUser implements Serializable {
+public class SysUser extends Model {
 
     @TableId("USER_ID")
     private String userId;
