@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-04-29 19:53:03
+Date: 2019-04-29 23:41:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,14 +47,14 @@ CREATE TABLE `sys_layui_table_cols` (
 -- ----------------------------
 -- Records of sys_layui_table_cols
 -- ----------------------------
-INSERT INTO `sys_layui_table_cols` VALUES ('1', 'user', 'LOGIN_NAME', '登录账号', '8%', '100', null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '1');
-INSERT INTO `sys_layui_table_cols` VALUES ('2', 'user', 'USER_NAME', '用户姓名', '8%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '2');
+INSERT INTO `sys_layui_table_cols` VALUES ('1', 'user', 'loginName', '登录账号', '8%', '100', null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '1');
+INSERT INTO `sys_layui_table_cols` VALUES ('2', 'user', 'userName', '用户姓名', '8%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '2');
 INSERT INTO `sys_layui_table_cols` VALUES ('27', 'user', ' ', '全选', '3%', null, 'checkbox', null, null, null, null, null, null, null, '', null, null, null, null, null, '0');
-INSERT INTO `sys_layui_table_cols` VALUES ('3', 'user', 'SEX', '性别', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '3');
-INSERT INTO `sys_layui_table_cols` VALUES ('4', 'user', 'MOBILE_PHONE', '手机号', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '4');
-INSERT INTO `sys_layui_table_cols` VALUES ('5', 'user', 'CREATE_TIME', '创建时间', '16%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '5');
-INSERT INTO `sys_layui_table_cols` VALUES ('6', 'user', 'STATUS', '状态', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '6');
-INSERT INTO `sys_layui_table_cols` VALUES ('7', 'user', 'TOOL', '操作', '20%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, '#usertoolbar', null, '7');
+INSERT INTO `sys_layui_table_cols` VALUES ('3', 'user', 'sex', '性别', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '3');
+INSERT INTO `sys_layui_table_cols` VALUES ('4', 'user', 'mobilePhone', '手机号', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '4');
+INSERT INTO `sys_layui_table_cols` VALUES ('5', 'user', 'createTime', '创建时间', '16%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '5');
+INSERT INTO `sys_layui_table_cols` VALUES ('6', 'user', 'status', '状态', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '6');
+INSERT INTO `sys_layui_table_cols` VALUES ('7', 'user', 'tool', '操作', '20%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, '#usertoolbar', null, '7');
 
 -- ----------------------------
 -- Table structure for sys_layui_table_config
@@ -82,13 +82,14 @@ CREATE TABLE `sys_layui_table_config` (
   `status` int(11) DEFAULT NULL COMMENT '是否为失效状态,0:失效，1：有效',
   `tree_table` varchar(11) CHARACTER SET utf8 DEFAULT NULL COMMENT '是否为treeTable结构,true:是，false：否',
   `tag` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '为每个table组赋统一标识',
+  `toolbar` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '表格头部工具栏',
   PRIMARY KEY (`table_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of sys_layui_table_config
 -- ----------------------------
-INSERT INTO `sys_layui_table_config` VALUES ('1', 'user', '#userList', '/admin/user/tableData', '', 'full-60', null, 'true', '20', '20,40,60', null, '暂无相关数据!', '', '', 'true', '', null, 'layui-hide', '1', null, null);
+INSERT INTO `sys_layui_table_config` VALUES ('1', 'user', '#userList', '/admin/user/tableData', '', 'full-60', null, 'true', '20', '20,40,60', null, '暂无相关数据!', '', '', 'true', '', null, 'layui-hide', '1', null, null, '#userTableBar');
 
 -- ----------------------------
 -- Table structure for sys_log
