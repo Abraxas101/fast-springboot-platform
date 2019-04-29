@@ -34,6 +34,7 @@ public class Table {
     private String cssClass;
     private boolean treeTable = false;
     private String tag;
+    private String toolbar;
 
     public Table(JSONObject json) {
         Set<String> key = json.keySet();
@@ -208,5 +209,13 @@ public class Table {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getToolbar() {
+        return toolbar;
+    }
+
+    public void setToolbar(String toolbar) {
+        this.toolbar = toolbar;
     }
 }

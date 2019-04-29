@@ -60,7 +60,7 @@ public class TableTag extends GeneralVarTagBinding {
             table.append(" var table = layui.table; ").append("\n");
             table.append("var tableIns = table.render({ ").append("\n");
 
-            table.append(" elem:'").append(this.tag.getElem()).append("'").append(",").append("\n");
+            table.append(" elem:'").append(this.tag.getElem()).append("'").append("\n");
             String url = ctxPath + this.tag.getUrl();
             table.append(",").append(" url:'").append(url).append("'").append("\n");
             if (this.tag.getCols() != null && this.tag.getCols().size() > 0) {
@@ -98,7 +98,9 @@ public class TableTag extends GeneralVarTagBinding {
                     table.append("}").append(iterator.hasNext() ? "," : "").append("\n");
                 }
             }
-
+            if (this.tag.getToolbar() != null) {
+                table.append(",").append(" toolbar: '").append(this.tag.getToolbar()).append("'").append("\n");
+            }
             if (this.tag.getWidth() != null) {
                 table.append(",").append(" width: '").append(this.tag.getWidth()).append("'").append("\n");
             }

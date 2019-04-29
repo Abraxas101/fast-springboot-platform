@@ -41,6 +41,7 @@ public class SysLayuiTableConfig extends Model {
     private String cssClass;
     private boolean treeTable = false;
     private String tag;
+    private String toolbar;
 
     public SysLayuiTableConfig(JSONObject json) {
         Set<String> key = json.keySet();
@@ -223,5 +224,13 @@ public class SysLayuiTableConfig extends Model {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getToolbar() {
+        return toolbar;
+    }
+
+    public void setToolbar(String toolbar) {
+        this.toolbar = toolbar;
     }
 }

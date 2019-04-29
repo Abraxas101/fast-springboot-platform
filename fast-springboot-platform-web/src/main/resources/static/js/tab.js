@@ -276,7 +276,7 @@ layui.define(['jquery', 'element', 'nprogress', 'utils'], function(exports) {
                     }));
                     break;
                 case renderType.iframe:
-                    contentHtm = contentHtm.replace('{{content}}', '<iframe src="' + url + '"></iframe>');
+                    contentHtm = contentHtm.replace('{{content}}', '<iframe src="' + ctxPath +url + '"></iframe>');
                     break;
             }
             //追加htm

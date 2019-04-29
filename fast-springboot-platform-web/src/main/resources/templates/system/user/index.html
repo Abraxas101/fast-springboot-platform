@@ -14,30 +14,18 @@
 </head>
 
 <body>
-
-<table class="layui-hide" id="demo" lay-filter="test"></table>
-<script>
-    layui.use('table', function(){
-        var table = layui.table;
-
-        table.render({
-            elem: '#demo'
-            ,url:'${ctxPath}/datas/table.json'
-            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            ,cols: [[
-                {field:'id', width:80, title: 'ID', sort: true}
-                ,{field:'username', width:80, title: '用户名'}
-                ,{field:'sex', width:80, title: '性别', sort: true}
-                ,{field:'city', width:80, title: '城市'}
-                ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                ,{field:'experience', title: '积分', sort: true}
-                ,{field:'score', title: '评分', sort: true}
-                ,{field:'classify', title: '职业'}
-                ,{field:'wealth', width:137, title: '财富', sort: true}
-            ]]
-        });
-    });
+<script type="text/html" id="userTableBar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
 </script>
+<script type="text/html" id="usertoolbar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<#table lay-filter="userList" tagconfig="${config}" ctxPath="${ctxPath}"></#table>
 
 </body>
 

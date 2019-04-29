@@ -142,7 +142,7 @@ layui.define(['layer', 'laytpl', 'element'], function(exports) {
           '<dl class="layui-nav-child">',
           '{{# layui.each(children,function(childIndex, child){ }}',
           '<dd>',
-          '<a href="javascript:;" kit-target data-options="{url:\'{{child.url}}\',icon:\'{{child.icon}}\',title:\'{{child.title}}\',id:\'{{child.id}}\'}">',
+          '<a href="javascript:;" kit-target aa data-options="{url:\'{{child.url}}\',icon:\'{{child.icon}}\',title:\'{{child.title}}\',id:\'{{child.id}}\'}">',
           '{{# if (child.icon.indexOf("fa-") !== -1) { }}',
           '<i class="fa {{child.icon}}" aria-hidden="true"></i>',
           '{{# } else { }}',
