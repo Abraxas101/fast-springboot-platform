@@ -7,83 +7,37 @@
     <link rel="icon" href="${ctxPath}/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="${ctxPath}/plugins/layui/css/layui.css" media="all"/>
     <link rel="stylesheet" href="${ctxPath}/plugins/font-awesome/css/font-awesome.min.css" media="all"/>
-    <link rel="stylesheet" href="${ctxPath}//css/app.css" media="all"/>
+    <link rel="stylesheet" href="${ctxPath}/css/app.css" media="all"/>
     <link rel="stylesheet" href="${ctxPath}/css/themes/default.css" media="all" id="skin" kit-skin/>
     <script src="${ctxPath}/plugins/layui/layui.js"></script>
+
 </head>
 
 <body>
 
-<div>
-    <script id="usertoolbar">
+<table class="layui-hide" id="demo" lay-filter="test"></table>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
 
-    </script>
-    <table class="layui-hide" id="userList" lay-filter="userList"></table>
-
-    <script>
-
-
-        layui.use('table', function(){
-            var table = layui.table;
-            var tableIns = table.render({
-                elem:'#userList',
-                url:'${ctxPath}/admin/user/tableData',
-                cols: [[
-                    {field:' ',title:'全选',width:'3%',type:'checkbox'},
-                    {field:'loginName',title:'登录账号',width:'8%',minWidth:100,align:'left'},
-                    {field:'userId',title:'用户ID',width:'11%',align:'left'},
-                    {field:'userName',title:'用户姓名',width:'8%',align:'left'},
-                    {field:'sex',title:'性别',width:'11%',align:'left'},
-                    {field:'mobilePhone',title:'手机号',width:'11%',align:'left'},
-                    {field:'createTime',title:'创建时间',width:'16%',align:'left'},
-                    {field:'status',title:'状态',width:'11%',align:'left'},
-                    {field:'TOOL',title:'操作',width:'20%',align:'left',toolbar:'#usertoolbar'}
-                ]],
-                height: 'full-60',
-                cellMinWidth: 80,
-                page: true,
-                limit: 20,
-                limits: [20,40,60],
-                skin: 'nob',
-                even: true,
-                loading: true,
-                text: {
-                    none: '暂无相关数据!'
-                },
-            });
-            $.fn.serializeObject = function(){
-                var o = {};
-                var a = this.serializeArray();
-                $.each(a, function() {
-                    if (o[this.name]) {
-                        if (!o[this.name].push) {  o[this.name] = [o[this.name]];}
-                        o[this.name].push(this.value||'');
-                    } else {
-                        o[this.name] = this.value||'';
-                    }});
-                return o;};
-            $("img[tag='query']").click(function(){
-                var para=$(this).parents('form').serializeObject();
-                tableIns.reload({where:para});
-            });
-            $("input[tag='query']").click(function(){
-                var para=$(this).parents('form').serializeObject();
-                tableIns.reload({where:para});
-            });
-            $("button[tag='query']").click(function(){
-                var para=$(this).parents('form').serializeObject();
-                tableIns.reload({where:para});
-            });
-            $("div[tag='query']").click(function(){
-                var para=$(this).parents('form').serializeObject();
-                tableIns.reload({where:para});
-            });
+        table.render({
+            elem: '#demo'
+            ,url:'${ctxPath}/datas/table.json'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,cols: [[
+                {field:'id', width:80, title: 'ID', sort: true}
+                ,{field:'username', width:80, title: '用户名'}
+                ,{field:'sex', width:80, title: '性别', sort: true}
+                ,{field:'city', width:80, title: '城市'}
+                ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'experience', title: '积分', sort: true}
+                ,{field:'score', title: '评分', sort: true}
+                ,{field:'classify', title: '职业'}
+                ,{field:'wealth', width:137, title: '财富', sort: true}
+            ]]
         });
-
-
-    </script>
-</div>
-
+    });
+</script>
 
 </body>
 

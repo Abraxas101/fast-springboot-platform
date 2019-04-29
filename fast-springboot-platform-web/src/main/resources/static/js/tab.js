@@ -5,7 +5,7 @@
  * Website:http://kit.zhengjinfan.cn/
  * LICENSE:MIT
  */
-layui.define(['jquery', 'element', 'utils'], function(exports) {
+layui.define(['jquery', 'element', 'nprogress', 'utils'], function(exports) {
     var $ = layui.jquery,
         _modName = 'tab',
         element = layui.element,
@@ -251,6 +251,7 @@ layui.define(['jquery', 'element', 'utils'], function(exports) {
                 that.tabChange(id);
                 return;
             }
+            NProgress.start();
             if (_config.openWait)
                 loadIndex = that.load();
             var titleHtm = ['<li class="layui-this" lay-id="' + id + '" data-url="' + url + '">'];
@@ -269,6 +270,7 @@ layui.define(['jquery', 'element', 'utils'], function(exports) {
                 case renderType.page:
                     contentHtm = contentHtm.replace('{{content}}', that.getBodyContent(url + '?v=' + new Date().getTime(), function() {
                         setTimeout(function() {
+                            NProgress.done();
                             _config.openWait && loadIndex && that.closeLoad(loadIndex);
                         }, 500);
                     }));
@@ -282,6 +284,7 @@ layui.define(['jquery', 'element', 'utils'], function(exports) {
             that._content.append(contentHtm);
             if (_config.renderType === renderType.iframe) {
                 that._content.find('div[lay-item-id=' + id + ']').find('iframe').on('load', function() {
+                    NProgress.done();
                     _config.openWait && loadIndex && that.closeLoad(loadIndex);
                 });
             }

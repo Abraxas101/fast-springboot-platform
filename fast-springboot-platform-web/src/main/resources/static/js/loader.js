@@ -5,13 +5,14 @@
  * Website:http://kit.zhengjinfan.cn/
  * LICENSE:MIT
  */
-layui.define(['jquery'], function(exports) {
+layui.define(['jquery', 'nprogress'], function(exports) {
     var $ = layui.jquery,
         _modName = 'loader';
 
     var loader = {
         version: '1.0.1',
         load: function(options) {
+            NProgress.start();
             var url = options.url,
                 name = options.name,
                 id = options.id,
@@ -25,6 +26,7 @@ layui.define(['jquery'], function(exports) {
                     typeof options.onSuccess === 'function' && options.onSuccess({ name: name, id: id });
                 }
                 typeof options.onComplate === 'function' && options.onComplate();
+                NProgress.done();
             });
         },
         //动态加载script

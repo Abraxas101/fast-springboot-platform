@@ -6,7 +6,7 @@
  * LICENSE:MIT
  */
 var tab;
-layui.define(['element', 'form', 'table', 'loader', 'tab', 'navbar', 'onelevel', 'laytpl'], function(exports) {
+layui.define(['element', 'nprogress', 'form', 'table', 'loader', 'tab', 'navbar', 'onelevel', 'laytpl', 'spa'], function(exports) {
     var $ = layui.jquery,
         element = layui.element,
         layer = layui.layer,
@@ -17,9 +17,13 @@ layui.define(['element', 'form', 'table', 'loader', 'tab', 'navbar', 'onelevel',
         table = layui.table,
         loader = layui.loader,
         navbar = layui.navbar,
+        _componentPath = 'components/',
+        spa = layui.spa;
     tab = layui.tab
     var app = {
-
+        hello: function(str) {
+            layer.alert('Hello ' + (str || 'test'));
+        },
         config: {
             type: 'iframe'
         },
@@ -31,6 +35,7 @@ layui.define(['element', 'form', 'table', 'loader', 'tab', 'navbar', 'onelevel',
         init: function() {
             var that = this,
                 _config = that.config;
+
             if (_config.type === 'iframe') {
                 tab.set({
                     elem: '#container',
@@ -42,34 +47,44 @@ layui.define(['element', 'form', 'table', 'loader', 'tab', 'navbar', 'onelevel',
                         return true; //返回true则关闭
                     }
                 }).render();
-               
-                //navbar加载方式二，设置远程地址加载
                 navbar.set({
                     remote: {
-                        url: ctxPath+'/datas/navbar1.json'
+                        url: ctxPath +'/datas/navbar1.json'
                     }
                 }).render(function(data) {
                     tab.tabAdd(data);
                 });
-                
                 //处理顶部一级菜单
                 var onelevel = layui.onelevel;
                 if (onelevel.hasElem()) {
                     onelevel.set({
                         remote: {
-                            url: ctxPath+'/datas/onelevel1.json' //远程地址
+                            url: ctxPath +'/datas/onelevel1.json' //远程地址
                         },
                         onClicked: function(id) {
-                            navbar.set({
-                                remote: {
-                                    url: ctxPath+ '/datas/navbar1.json'
-                                }
-                            }).render(function(data) {
-                                tab.tabAdd(data);
-                            });
+                            switch (id) {
+                                case 1:
+                                    navbar.set({
+                                        remote: {
+                                            url: ctxPath +'/datas/navbar1.json'
+                                        }
+                                    }).render(function(data) {
+                                        tab.tabAdd(data);
+                                    });
+                                    break;
+                                case 2:
+                                    navbar.set({
+                                        remote: {
+                                            url: ctxPath +'/datas/navbar2.json'
+                                        }
+                                    }).render(function(data) {
+                                        tab.tabAdd(data);
+                                    });
+                                    break;
+                            }
                         },
                         renderAfter: function(elem) {
-                            elem.find('li').eq(0).click();
+                            elem.find('li').eq(0).click(); //模拟点击第一个
                         }
                     }).render();
                 }

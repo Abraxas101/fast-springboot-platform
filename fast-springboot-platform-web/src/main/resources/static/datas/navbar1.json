@@ -7,7 +7,7 @@
         "id": "7",
         "title": "表格",
         "icon": "&#xe6c6;",
-        "url": "test.html"
+        "url": "/admin/user/index"
     }, {
         "id": "8",
         "title": "表单",
