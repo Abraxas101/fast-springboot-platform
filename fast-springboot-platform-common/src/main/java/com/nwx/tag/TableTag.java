@@ -62,14 +62,14 @@ public class TableTag extends GeneralVarTagBinding {
 
             table.append(" elem:'").append(this.tag.getElem()).append("'").append(",").append("\n");
             String url = ctxPath + this.tag.getUrl();
-            table.append(" url:'").append(url).append("'").append(",").append("\n");
+            table.append(",").append(" url:'").append(url).append("'").append("\n");
             if (this.tag.getCols() != null && this.tag.getCols().size() > 0) {
-                table.append(" cols: [[ ").append("\n");
+                table.append(",").append(" cols: [[ ").append("\n");
                 Iterator iterator = this.tag.getCols().iterator();
 
                 while(true) {
                     if (!iterator.hasNext()) {
-                        table.append(" ]]").append(",").append("\n");
+                        table.append(" ]]").append("\n");
                         break;
                     }
 
@@ -100,56 +100,56 @@ public class TableTag extends GeneralVarTagBinding {
             }
 
             if (this.tag.getWidth() != null) {
-                table.append(" width: '").append(this.tag.getWidth()).append("'").append(",").append("\n");
+                table.append(",").append(" width: '").append(this.tag.getWidth()).append("'").append("\n");
             }
 
             if (this.tag.getHeight() != null) {
-                table.append(" height: '").append(this.tag.getHeight()).append("'").append(",").append("\n");
+                table.append(",").append(" height: '").append(this.tag.getHeight()).append("'").append("\n");
             }
 
             if (this.tag.getCellMinWidth() != null) {
-                table.append(" cellMinWidth: ").append(this.tag.getCellMinWidth()).append(",").append("\n");
+                table.append(",").append(" cellMinWidth: ").append(this.tag.getCellMinWidth()).append("\n");
             }
 
             if (this.tag.getPage() != null) {
-                table.append(" page: ").append(this.tag.getPage()).append(",").append("\n");
+                table.append(",").append(" page: ").append(this.tag.getPage()).append("\n");
             }
 
             if (this.tag.getLimit() != null) {
-                table.append(" limit: ").append(this.tag.getLimit()).append(",").append("\n");
+                table.append(",").append(" limit: ").append(this.tag.getLimit()).append("\n");
             }
 
             if (this.tag.getLimits() != null && this.tag.getLimits().length > 0) {
-                table.append(" limits: ").append(JSONUtil.toJsonStr(this.tag.getLimits())).append(",").append("\n");
+                table.append(",").append(" limits: ").append(JSONUtil.toJsonStr(this.tag.getLimits())).append("\n");
             }
 
             if (this.tag.getSkin() != null) {
-                table.append(" skin: '").append(this.tag.getSkin()).append("'").append(",").append("\n");
+                table.append(",").append(" skin: '").append(this.tag.getSkin()).append("'").append("\n");
             }
 
             if (this.tag.getEven() != null) {
-                table.append(" even: ").append(this.tag.getEven()).append(",").append("\n");
+                table.append(",").append(" even: ").append(this.tag.getEven()).append("\n");
             }
 
             if (this.tag.getSize() != null) {
-                table.append(" size: '").append(this.tag.getSize()).append("'").append(",").append("\n");
+                table.append(",").append(" size: '").append(this.tag.getSize()).append("'").append("\n");
             }
 
             if (this.tag.getLoading() != null) {
-                table.append(" loading: ").append(this.tag.getLoading()).append(",").append("\n");
+                table.append(",").append(" loading: ").append(this.tag.getLoading()).append("\n");
             }
 
             if (StrUtil.isNotBlank(this.tag.getText())) {
-                table.append(" text: {\n none: '").append(this.tag.getText()).append("'\n }").append(",").append("\n");
+                table.append(",").append(" text: {\n none: '").append(this.tag.getText()).append("'\n }").append("\n");
             }
 
             if (this.tag.getDone() != null) {
-                table.append(" done: ").append(this.tag.getDone()).append(",").append("\n");
+                table.append(",").append(" done: ").append(this.tag.getDone()).append("\n");
             }
 
             if (StrUtil.isNotBlank(this.tag.getInitSort())) {
                 JSONObject initSort = JSONObject.parseObject(this.tag.getInitSort());
-                table.append(" initSort: {\n field: '").append(initSort.get("field")).append("', \n").append(" type: '").append(initSort.get("type")).append("'  \n}").append(",").append("\n");
+                table.append(",").append(" initSort: {\n field: '").append(initSort.get("field")).append("', \n").append(" type: '").append(initSort.get("type")).append("'  \n}").append("\n");
             }
 
             table.append(" }); ").append("\n");
