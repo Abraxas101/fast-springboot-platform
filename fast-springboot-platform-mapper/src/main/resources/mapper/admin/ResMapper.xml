@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nwx.mapper.admin.SysResMapper">
+    <resultMap id="res" type="com.nwx.entity.admin.SysRes"/>
+    <parameterMap id="res" type="com.nwx.entity.admin.SysRes"/>
+
+    <select id="getNavBars" resultMap="res" parameterType="Map">
+        select t.RES_ID,t.PAR_RES_ID,t.RES_NAME, t.RES_ICON, t.RES_URL
+        from sys_res t
+        where t.`STATUS` = 1
+        <if test="level != null">
+            and t.RES_LEVELS = #{level}
+        </if>
+        <if test="pId != null">
+            and t.PAR_RES_ID = #{pId}
+        </if>
+        order by t.RES_ORDER
+    </select>
+</mapper>

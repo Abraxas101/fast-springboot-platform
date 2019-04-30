@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @version : V1.font-awesome
@@ -22,9 +23,9 @@ public class SysResServiceImpl extends ServiceImpl<SysResMapper, SysRes> impleme
     private SysResMapper resMapper;
 
     @Override
-    public List<SysRes> getNavBars(String userId) {
+    public List<SysRes> getNavBars(Map<String, Object> queryMap) {
 
-        List<SysRes> sysRes = resMapper.selectList(null);
+        List<SysRes> sysRes = resMapper.getNavBars(queryMap);
 
         return sysRes;
     }

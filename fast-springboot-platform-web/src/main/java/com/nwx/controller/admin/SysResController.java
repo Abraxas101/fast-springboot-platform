@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @version : V1.0
@@ -27,11 +30,19 @@ public class SysResController {
 
     @RequestMapping("/getNavBar")
     @ResponseBody
-    public List<NavbarBuilder.Navbar> getNavBar(){
+    public List<NavbarBuilder.Navbar> getNavBar(HttpServletRequest request){
 
         String userId = "1";
 
-        List<SysRes> resList = sysResService.getNavBars(userId);
+        String level = request.getParameter("level");
+        String pId = request.getParameter("pId");
+
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("level", level);
+        queryMap.put("userId", userId);
+        queryMap.put("pId", pId);
+
+        List<SysRes> resList = sysResService.getNavBars(queryMap);
 
         List<NavbarBuilder.Navbar> navbars = new ArrayList<NavbarBuilder.Navbar>();
         for (SysRes sysRes : resList){

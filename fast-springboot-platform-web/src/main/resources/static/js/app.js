@@ -59,29 +59,16 @@ layui.define(['element', 'nprogress', 'form', 'table', 'loader', 'tab', 'navbar'
                 if (onelevel.hasElem()) {
                     onelevel.set({
                         remote: {
-                            url: ctxPath +'/datas/onelevel1.json' //远程地址
+                            url: ctxPath +'/admin/res/getNavBar?level=1' //远程地址
                         },
                         onClicked: function(id) {
-                            switch (id) {
-                                case 1:
-                                    navbar.set({
-                                        remote: {
-                                            url: ctxPath +'/admin/res/getNavBar'
-                                        }
-                                    }).render(function(data) {
-                                        tab.tabAdd(data);
-                                    });
-                                    break;
-                                case 2:
-                                    navbar.set({
-                                        remote: {
-                                            url: ctxPath +'/datas/navbar2.json'
-                                        }
-                                    }).render(function(data) {
-                                        tab.tabAdd(data);
-                                    });
-                                    break;
-                            }
+                            navbar.set({
+                                remote: {
+                                    url: ctxPath +'/admin/res/getNavBar?pId='+id
+                                }
+                            }).render(function(data) {
+                                tab.tabAdd(data);
+                            });
                         },
                         renderAfter: function(elem) {
                             elem.find('li').eq(0).click(); //模拟点击第一个
