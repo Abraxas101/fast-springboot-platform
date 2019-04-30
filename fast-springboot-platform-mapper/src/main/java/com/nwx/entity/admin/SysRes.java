@@ -12,7 +12,7 @@ import java.util.Date;
  * @Auther: Neil
  * @Date: 2019/4/23 17:25
  */
-@TableName("SYS_USER")
+@TableName("SYS_RES")
 public class SysRes extends Model{
 
     @TableId("RES_ID")

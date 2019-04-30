@@ -7,6 +7,8 @@ import com.nwx.service.admin.SysResService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @version : V1.font-awesome
  * @Description: 资源管理
@@ -18,4 +20,12 @@ public class SysResServiceImpl extends ServiceImpl<SysResMapper, SysRes> impleme
 
     @Autowired
     private SysResMapper resMapper;
+
+    @Override
+    public List<SysRes> getNavBars(String userId) {
+
+        List<SysRes> sysRes = resMapper.selectList(null);
+
+        return sysRes;
+    }
 }

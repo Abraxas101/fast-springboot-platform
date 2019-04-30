@@ -49,7 +49,7 @@ layui.define(['element', 'nprogress', 'form', 'table', 'loader', 'tab', 'navbar'
                 }).render();
                 navbar.set({
                     remote: {
-                        url: ctxPath +'/datas/navbar1.json'
+                        url: ctxPath +'/admin/res/getNavBar'
                     }
                 }).render(function(data) {
                     tab.tabAdd(data);
@@ -66,7 +66,7 @@ layui.define(['element', 'nprogress', 'form', 'table', 'loader', 'tab', 'navbar'
                                 case 1:
                                     navbar.set({
                                         remote: {
-                                            url: ctxPath +'/datas/navbar1.json'
+                                            url: ctxPath +'/admin/res/getNavBar'
                                         }
                                     }).render(function(data) {
                                         tab.tabAdd(data);
