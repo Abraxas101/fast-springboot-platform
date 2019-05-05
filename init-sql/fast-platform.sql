@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50505
+Source Server Version : 50726
 Source Host           : localhost:3306
 Source Database       : fast-platform
 
 Target Server Type    : MYSQL
-Target Server Version : 50505
+Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2019-05-01 00:55:58
+Date: 2019-05-05 20:28:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,13 +48,17 @@ CREATE TABLE `sys_layui_table_cols` (
 -- Records of sys_layui_table_cols
 -- ----------------------------
 INSERT INTO `sys_layui_table_cols` VALUES ('1', 'user', 'loginName', '登录账号', '15%', '100', null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '1');
+INSERT INTO `sys_layui_table_cols` VALUES ('10', 'role', 'status', '状态', '13%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '2');
+INSERT INTO `sys_layui_table_cols` VALUES ('11', 'role', '', '全选', '13%', null, 'checkbox', null, null, null, null, null, null, null, 'left', null, null, null, null, null, '0');
+INSERT INTO `sys_layui_table_cols` VALUES ('12', 'role', 'tool', '操作', '20%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, '#roletoolbar', null, '3');
 INSERT INTO `sys_layui_table_cols` VALUES ('2', 'user', 'userName', '用户姓名', '15%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '2');
-INSERT INTO `sys_layui_table_cols` VALUES ('27', 'user', ' ', '全选', '3%', null, 'checkbox', null, null, null, null, null, null, null, '', null, null, null, null, null, '0');
 INSERT INTO `sys_layui_table_cols` VALUES ('3', 'user', 'sex', '性别', '12%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '3');
 INSERT INTO `sys_layui_table_cols` VALUES ('4', 'user', 'mobilePhone', '手机号', '15%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '4');
 INSERT INTO `sys_layui_table_cols` VALUES ('5', 'user', 'createTime', '创建时间', '15%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '5');
 INSERT INTO `sys_layui_table_cols` VALUES ('6', 'user', 'status', '状态', '11%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '6');
 INSERT INTO `sys_layui_table_cols` VALUES ('7', 'user', 'tool', '操作', '13%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, '#usertoolbar', null, '7');
+INSERT INTO `sys_layui_table_cols` VALUES ('8', 'user', ' ', '全选', '3%', null, 'checkbox', null, null, null, null, null, null, null, '', null, null, null, null, null, '0');
+INSERT INTO `sys_layui_table_cols` VALUES ('9', 'role', 'roleName', '角色名称', '13%', null, null, null, null, null, null, null, null, null, 'left', null, null, null, null, null, '1');
 
 -- ----------------------------
 -- Table structure for sys_layui_table_config
@@ -89,6 +93,7 @@ CREATE TABLE `sys_layui_table_config` (
 -- Records of sys_layui_table_config
 -- ----------------------------
 INSERT INTO `sys_layui_table_config` VALUES ('1', 'user', '#userList', '/admin/user/tableData', '', 'full-60', null, 'true', '20', '20,40,60', null, '暂无相关数据!', '', '', 'true', '', null, 'layui-hide', '1', null, null);
+INSERT INTO `sys_layui_table_config` VALUES ('2', 'role', '#roleList', '/admin/role/tableData', null, 'full-60', null, 'true', '20', '20,40,60', null, '暂无相关数据!', null, null, 'true', null, null, 'layui-hide', '1', null, null);
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -138,7 +143,6 @@ CREATE TABLE `sys_res` (
 -- Records of sys_res
 -- ----------------------------
 INSERT INTO `sys_res` VALUES ('1001', '', '0', '管理系统', 'fa fa-align-justify', null, '0', null, '1', '1', '2019-04-30 10:24:31', null, null, '1');
-INSERT INTO `sys_res` VALUES ('1002', '', '0', '监控系统', 'fa fa-bar-chart', null, '1', null, '1', '1', '2019-04-30 10:26:18', null, null, '1');
 INSERT INTO `sys_res` VALUES ('1003', 'system:user', '1006', '用户管理', 'fa fa-user', '/admin/user/index', '0', null, '1', '1', '2019-04-30 10:27:06', null, null, '3');
 INSERT INTO `sys_res` VALUES ('1004', 'system:role', '1006', '角色管理', 'fa fa-user', '/admin/role/index', '1', null, '1', '1', '2019-04-30 10:27:46', null, null, '3');
 INSERT INTO `sys_res` VALUES ('1005', 'system:res', '1006', '资源管理', 'fa fa-navicon', '/admin/res/index', '2', null, '1', '1', '2019-04-30 10:28:56', null, null, '3');
@@ -237,3 +241,23 @@ CREATE TABLE `sys_user_role` (
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
+
+-- ----------------------------
+-- Function structure for getResChildList
+-- ----------------------------
+DROP FUNCTION IF EXISTS `getResChildList`;
+DELIMITER ;;
+CREATE DEFINER=`skip-grants user`@`skip-grants host` FUNCTION `getResChildList`(`resId` longtext) RETURNS varchar(1000) CHARSET utf8mb4
+BEGIN
+	DECLARE sTemp VARCHAR(1000);
+   DECLARE sTempChd VARCHAR(1000);
+   SET sTemp = '$';
+   SET sTempChd =cast(resId as CHAR);
+     WHILE sTempChd is not null DO
+       SET sTemp = concat(sTemp,',',sTempChd);
+       SELECT group_concat(res_id) INTO sTempChd FROM (select * from sys_res where par_res_id <> 0) t where FIND_IN_SET(par_res_id,sTempChd)>0;
+      END WHILE;
+      RETURN sTemp;
+END
+;;
+DELIMITER ;
