@@ -8,5 +8,9 @@ import java.util.Map;
 
 public interface SysResMapper extends BaseMapper<SysRes> {
 
-    List<SysRes> getNavBars(Map<String, Object> queryMap);
+    List<SysRes> getOneNavBars(Map<String, Object> queryMap);
+
+    List<SysRes> getResChildList(Map<String, Object> queryMap);
+
+    List<Map<String,Object>> getResTreeList(Map<String, Object> queryMap);
 }

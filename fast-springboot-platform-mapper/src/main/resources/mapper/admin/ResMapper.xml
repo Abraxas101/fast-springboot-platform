@@ -4,16 +4,27 @@
     <resultMap id="res" type="com.nwx.entity.admin.SysRes"/>
     <parameterMap id="res" type="com.nwx.entity.admin.SysRes"/>
 
-    <select id="getNavBars" resultMap="res" parameterType="Map">
+    <select id="getOneNavBars" resultMap="res" parameterType="Map">
         select t.RES_ID,t.PAR_RES_ID,t.RES_NAME, t.RES_ICON, t.RES_URL
         from sys_res t
         where t.`STATUS` = 1
         <if test="level != null">
             and t.RES_LEVELS = #{level}
         </if>
-        <if test="pId != null">
-            and t.PAR_RES_ID = #{pId}
-        </if>
+        order by t.RES_ORDER
+    </select>
+
+    <select id="getResChildList" resultMap="res" parameterType="Map">
+        select t.RES_ID,t.PAR_RES_ID,t.RES_NAME, t.RES_ICON, t.RES_URL
+        from sys_res t
+        where FIND_IN_SET(res_id,getResChildList(#{pId}))
+        AND <![CDATA[ res_id <> #{pId} ]]>
+        order by t.RES_ORDER
+    </select>
+
+    <select id="getResTreeList" resultType="java.util.HashMap" parameterType="Map">
+        select t.RES_ID id,t.PAR_RES_ID pid,t.RES_NAME resName, t.RES_ICON resIcon, IFNULL(t.RES_URL,'') resUrl
+        from sys_res t
         order by t.RES_ORDER
     </select>
 </mapper>

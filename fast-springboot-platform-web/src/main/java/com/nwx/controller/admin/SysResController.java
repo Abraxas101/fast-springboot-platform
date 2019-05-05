@@ -1,8 +1,11 @@
 package com.nwx.controller.admin;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.nwx.common.NavbarBuilder;
 import com.nwx.entity.admin.SysRes;
+import com.nwx.entity.common.SysLayuiTableCols;
+import com.nwx.entity.common.SysLayuiTableConfig;
 import com.nwx.service.admin.SysResService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +31,12 @@ public class SysResController {
     @Autowired
     private SysResService sysResService;
 
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request){
+
+        return "system/res/index.html";
+    }
+
     @RequestMapping("/getNavBar")
     @ResponseBody
     public List<NavbarBuilder.Navbar> getNavBar(HttpServletRequest request){
@@ -42,7 +51,14 @@ public class SysResController {
         queryMap.put("userId", userId);
         queryMap.put("pId", pId);
 
-        List<SysRes> resList = sysResService.getNavBars(queryMap);
+        List<SysRes> resList = new ArrayList<>();
+
+        if(level != null){
+            resList = sysResService.getOneNavBars(queryMap);
+        }else if(pId != null){
+            resList = sysResService.getResChildList(queryMap);
+        }
+
 
         List<NavbarBuilder.Navbar> navbars = new ArrayList<NavbarBuilder.Navbar>();
         for (SysRes sysRes : resList){
@@ -59,5 +75,16 @@ public class SysResController {
 
         return new NavbarBuilder(navbars).buildTree();
 
+    }
+
+    @RequestMapping("/tableData")
+    @ResponseBody
+    public List<Map<String,Object>> tableData(){
+
+        Map<String, Object> queryMap = new HashMap<>();
+
+        List<Map<String,Object>> treeDatas = sysResService.getResTreeList(queryMap);
+
+        return treeDatas;
     }
 }

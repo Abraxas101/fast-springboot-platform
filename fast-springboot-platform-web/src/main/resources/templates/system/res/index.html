@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>KIT ADMIN</title>
+    <link rel="icon" href="${ctxPath}/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="${ctxPath}/plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="${ctxPath}/plugins/font-awesome/css/font-awesome.min.css" media="all"/>
+    <link rel="stylesheet" href="${ctxPath}/css/app.css" media="all"/>
+    <link rel="stylesheet" href="${ctxPath}/css/themes/default.css" media="all" id="skin" kit-skin/>
+    <script src="${ctxPath}/plugins/layui/layui.js"></script>
+
+</head>
+
+<body>
+<table class="layui-table layui-form" id="resTreeList" lay-size="sm"></table>
+
+
+<script>
+    layui.config({
+        base: '${ctxPath}/js/',
+    })
+    layui.use(['treeTable', 'layer', 'code', 'form'], function () {
+        var form = layui.form,
+            treeTable = layui.treeTable;
+        treeTable.render({
+            elem: '#resTreeList',
+            url: "${ctxPath}/admin/res/tableData",
+            is_checkbox: true,
+            icon_key: 'resName',
+            cols: [{
+                    key: 'resName',
+                    title: '名称',
+                    width: '100px',
+                },
+                {
+                    key: 'id',
+                    title: 'ID',
+                    width: '100px',
+                    align: 'center',
+                },
+                {
+                    key: 'resIcon',
+                    title: '菜单图标',
+                    width: '100px',
+                    align: 'center',
+                    template: function (item) {
+                        return '<i class="'+item.resIcon+'"></i>';
+                    }
+                },{
+                    key: 'resUrl',
+                    title: '菜单路径',
+                    width: '100px',
+                    align: 'center',
+
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    template: function (item) {
+                        return '<a lay-filter="add">添加</a> | <a target="_blank" href="/detail?id=' + item.id + '">编辑</a>';
+                    }
+                }
+            ]
+        });
+    });
+</script>
+</body>
+</html>

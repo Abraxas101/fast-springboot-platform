@@ -23,9 +23,24 @@ public class SysResServiceImpl extends ServiceImpl<SysResMapper, SysRes> impleme
     private SysResMapper resMapper;
 
     @Override
-    public List<SysRes> getNavBars(Map<String, Object> queryMap) {
+    public List<SysRes> getOneNavBars(Map<String, Object> queryMap) {
 
-        List<SysRes> sysRes = resMapper.getNavBars(queryMap);
+        List<SysRes> sysRes = resMapper.getOneNavBars(queryMap);
+
+        return sysRes;
+    }
+
+    @Override
+    public List<SysRes> getResChildList(Map<String, Object> queryMap) {
+        List<SysRes> sysRes = resMapper.getResChildList(queryMap);
+
+        return sysRes;
+    }
+
+    @Override
+    public List<Map<String,Object>> getResTreeList(Map<String, Object> queryMap) {
+
+        List<Map<String,Object>> sysRes = resMapper.getResTreeList(queryMap);
 
         return sysRes;
     }

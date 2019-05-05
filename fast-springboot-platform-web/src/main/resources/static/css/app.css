@@ -419,3 +419,19 @@ button {
         padding-left: 0;
     }
 }
+
+.pageMain{
+    padding: 10px;
+    height: 100%;
+    position: relative;
+    background-color: #fff;
+}
+
+.layui-btn-group i{
+    color: #4097ff;
+    font-size: 14px !important;
+}
+
+.advancedSerach{
+    display: none;
+}
