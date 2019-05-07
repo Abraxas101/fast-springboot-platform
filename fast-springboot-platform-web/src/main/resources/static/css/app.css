@@ -424,7 +424,7 @@ button {
     padding: 10px;
     height: 100%;
     position: relative;
-    background-color: #fff;
+    background-color: #E5EBF2;
 }
 
 .layui-btn-group i{
@@ -432,6 +432,36 @@ button {
     font-size: 14px !important;
 }
 
-.advancedSerach{
-    display: none;
+.module_title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 14px;
+    background-color: #fafafa;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.module_title span{
+    border-bottom: 3px solid #f3b150;
+}
+
+.module_query{
+
+}
+
+.page-query{
+    border-color: #ddd;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.page-table{
+    background-color: #fff;
+    padding-bottom: 5px;
+}
+
+.module-data{
+    padding: 0px 10px;
 }
