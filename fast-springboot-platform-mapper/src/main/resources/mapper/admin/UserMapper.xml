@@ -4,7 +4,4 @@
     <resultMap id="user" type="com.nwx.entity.admin.SysUser"/>
     <parameterMap id="user" type="com.nwx.entity.admin.SysUser"/>
 
-    <select id="getUserList" resultMap="user">
-        SELECT  * FROM SYS_USER
-    </select>
 </mapper>

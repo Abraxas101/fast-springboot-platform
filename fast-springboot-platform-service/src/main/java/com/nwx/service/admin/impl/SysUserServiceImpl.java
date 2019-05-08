@@ -28,13 +28,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private SysUserMapper userMapper;
 
     @Override
-    @Cacheable(value="user",key="'getUserList'")
-    public List<SysUser> getUserList(){
-
-        return userMapper.getUserList();
-    }
-
-    @Override
     @Cacheable(value="user",key="'getUserPage'")
     public IPage<SysUser> getUserPage(QueryUser queryUser) {
 
