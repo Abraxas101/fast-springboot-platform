@@ -12,13 +12,11 @@
     <artifactId>fast-springboot-platform-service</artifactId>
 
     <dependencies>
-
         <dependency>
-            <groupId>com.nwx</groupId>
-            <artifactId>fast-springboot-platform-mapper</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        <groupId>com.nwx</groupId>
+        <artifactId>fast-springboot-platform-mapper</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 
     </dependencies>
-
 </project>

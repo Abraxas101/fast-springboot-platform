@@ -23,8 +23,31 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    #password: 123123
+    database: 1
+    timeout: 60s
+    jedis:
+      pool:
+        max-idle: 50
+        min-idle: 5
+        max-wait: -1s
+        max-active: -1
+    transaction:
+      rollback-on-commit-failure: true
+    cache:
+      type: redis
+      cache-names: redisCache
+      redis:
+        time-to-live: 60s
+        use-key-prefix: true
+        key-prefix: cacheee
 
 mybatis-plus:
+  configuration:
+    cache-enabled: true
   mapper-locations: classpath*:/mapper/*/**Mapper.xml
   typeAliasesPackage: com.nwx.entity
   global-config:

@@ -9,10 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fast-springboot-platform-common</artifactId>
+    <artifactId>fast-springboot-platform-core</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -28,6 +27,14 @@
         <dependency>
             <groupId>com.ibeetl</groupId>
             <artifactId>beetl-framework-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
         </dependency>
     </dependencies>
 </project>

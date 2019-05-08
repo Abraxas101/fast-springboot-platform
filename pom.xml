@@ -31,7 +31,7 @@
         <module>fast-springboot-platform-web</module>
         <module>fast-springboot-platform-service</module>
         <module>fast-springboot-platform-mapper</module>
-        <module>fast-springboot-platform-common</module>
+        <module>fast-springboot-platform-core</module>
     </modules>
 
     <dependencyManagement>
@@ -70,14 +70,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
