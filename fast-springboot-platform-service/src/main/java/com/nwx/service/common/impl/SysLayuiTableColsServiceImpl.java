@@ -5,6 +5,7 @@ import com.nwx.entity.common.SysLayuiTableCols;
 import com.nwx.mapper.common.SysLayuiTableColsMapper;
 import com.nwx.service.common.SysLayuiTableColsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class SysLayuiTableColsServiceImpl extends ServiceImpl<SysLayuiTableColsM
     private SysLayuiTableColsMapper sysLayuiTableColsMapper;
 
     @Override
+    @Cacheable(value="layuicol",key="'findColsByTableCode'")
     public List<SysLayuiTableCols> findColsByTableCode(String tableCode) {
         return sysLayuiTableColsMapper.findColsByTableCode(tableCode);
     }

@@ -11,6 +11,7 @@ import com.nwx.entity.common.SysLayuiTableConfig;
 import com.nwx.service.admin.SysUserService;
 import com.nwx.service.common.SysLayuiTableColsService;
 import com.nwx.service.common.SysLayuiTableConfigService;
+import com.nwx.vo.QueryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,12 +54,9 @@ public class SysUserController {
 
     @RequestMapping("/tableData")
     @ResponseBody
-    public DataTable tableData(HttpServletRequest request){
+    public DataTable tableData(QueryUser queryUser){
 
-        int page = Integer.parseInt(request.getParameter("page"));
-        int limit = Integer.parseInt(request.getParameter("limit"));
-
-        IPage<SysUser> pageInfo = userService.page(new Page<SysUser>(page, limit), new QueryWrapper<>());
+        IPage<SysUser> pageInfo = userService.getUserPage(queryUser);
         return new DataTable(pageInfo.getTotal(), pageInfo.getRecords());
     }
 
