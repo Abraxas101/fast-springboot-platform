@@ -6,7 +6,7 @@ import com.nwx.entity.admin.SysRes;
 import java.util.List;
 import java.util.Map;
 
-public interface SysResService extends IService<SysRes> {
+public interface SysResService {
 
     List<SysRes> getOneNavBars(Map<String, Object> queryMap);
 

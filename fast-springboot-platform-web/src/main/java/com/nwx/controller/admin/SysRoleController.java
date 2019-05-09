@@ -54,10 +54,11 @@ public class SysRoleController {
     @RequestMapping("/tableData")
     @ResponseBody
     public DataTable tableData(HttpServletRequest request){
-        int page = Integer.parseInt(request.getParameter("page"));
-        int limit = Integer.parseInt(request.getParameter("limit"));
-
-        IPage<SysRole> pageInfo = roleService.page(new Page<SysRole>(page, limit), new QueryWrapper<>());
-        return new DataTable(pageInfo.getTotal(), pageInfo.getRecords());
+//        int page = Integer.parseInt(request.getParameter("page"));
+//        int limit = Integer.parseInt(request.getParameter("limit"));
+//
+//        IPage<SysRole> pageInfo = roleService.page(new Page<SysRole>(page, limit), new QueryWrapper<>());
+//        return new DataTable(pageInfo.getTotal(), pageInfo.getRecords());
+        return null;
     }
 }

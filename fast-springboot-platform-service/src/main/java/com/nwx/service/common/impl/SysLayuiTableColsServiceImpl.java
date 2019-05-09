@@ -17,7 +17,7 @@ import java.util.List;
  * @Date: 2019/4/25 11:00
  */
 @Service
-public class SysLayuiTableColsServiceImpl extends ServiceImpl<SysLayuiTableColsMapper, SysLayuiTableCols> implements SysLayuiTableColsService {
+public class SysLayuiTableColsServiceImpl implements SysLayuiTableColsService {
 
     @Autowired
     private SysLayuiTableColsMapper sysLayuiTableColsMapper;

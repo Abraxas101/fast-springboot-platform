@@ -52,7 +52,6 @@ mybatis-plus:
   typeAliasesPackage: com.nwx.entity
   global-config:
     db-config:
-      db-column-underline: true
       logic-delete-value: 1
       logic-not-delete-value: 0
 

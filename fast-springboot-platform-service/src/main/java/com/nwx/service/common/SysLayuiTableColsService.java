@@ -5,6 +5,6 @@ import com.nwx.entity.common.SysLayuiTableCols;
 
 import java.util.List;
 
-public interface SysLayuiTableColsService extends IService<SysLayuiTableCols> {
+public interface SysLayuiTableColsService {
     List<SysLayuiTableCols> findColsByTableCode(String user);
 }

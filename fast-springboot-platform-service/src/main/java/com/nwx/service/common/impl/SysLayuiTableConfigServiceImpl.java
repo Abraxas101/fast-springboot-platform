@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @Date: 2019/4/25 11:03
  */
 @Service
-public class SysLayuiTableConfigServiceImpl extends ServiceImpl<SysLayuiTableConfigMapper, SysLayuiTableConfig> implements SysLayuiTableConfigService {
+public class SysLayuiTableConfigServiceImpl implements SysLayuiTableConfigService {
 
     @Autowired
     private SysLayuiTableConfigMapper sysLayuiTableConfigMapper;

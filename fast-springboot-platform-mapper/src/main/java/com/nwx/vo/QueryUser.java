@@ -8,4 +8,13 @@ package com.nwx.vo;
  */
 public class QueryUser extends BaseTableQuery{
 
+    private String userNmae;
+
+    public String getUserNmae() {
+        return userNmae;
+    }
+
+    public void setUserNmae(String userNmae) {
+        this.userNmae = userNmae;
+    }
 }

@@ -8,10 +8,13 @@ import com.nwx.mapper.admin.SysUserMapper;
 import com.nwx.entity.admin.SysUser;
 import com.nwx.service.admin.SysUserService;
 import com.nwx.vo.QueryUser;
+import com.nwx.vo.SaveUserVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,8 +30,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Autowired
     private SysUserMapper userMapper;
 
+
     @Override
-    @Cacheable(value="user",key="'getUserPage'")
     public IPage<SysUser> getUserPage(QueryUser queryUser) {
 
         SysUser sysUser = new SysUser();
@@ -41,4 +44,22 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         return userList;
     }
 
+    @Override
+    @Transactional
+    public int saveUser(SaveUserVo saveUserVo) {
+
+        String userId = saveUserVo.getUserId();
+        int token = 0;
+        if(userId != null){
+            token = userMapper.updateById(saveUserVo);
+        }else{
+            token = userMapper.insert(saveUserVo);
+        }
+
+        String[] roleIds = saveUserVo.getRoleIds().split(",");
+
+        //保存用户和角色的关系
+
+        return token;
+    }
 }

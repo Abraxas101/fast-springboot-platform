@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nwx.common.DataTable;
+import com.nwx.common.RestResult;
 import com.nwx.entity.admin.SysUser;
 import com.nwx.entity.common.SysLayuiTableCols;
 import com.nwx.entity.common.SysLayuiTableConfig;
@@ -12,6 +13,7 @@ import com.nwx.service.admin.SysUserService;
 import com.nwx.service.common.SysLayuiTableColsService;
 import com.nwx.service.common.SysLayuiTableConfigService;
 import com.nwx.vo.QueryUser;
+import com.nwx.vo.SaveUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @version : V1.font-awesome
@@ -56,6 +59,8 @@ public class SysUserController {
     @ResponseBody
     public DataTable tableData(QueryUser queryUser){
 
+        queryUser.setUserNmae(UUID.randomUUID().toString());
+
         IPage<SysUser> pageInfo = userService.getUserPage(queryUser);
         return new DataTable(pageInfo.getTotal(), pageInfo.getRecords());
     }
@@ -64,5 +69,18 @@ public class SysUserController {
     public String toSaveUI(){
 
         return "system/user/save.html";
+    }
+
+    @RequestMapping("/save")
+    @ResponseBody
+    public RestResult save(SaveUserVo saveUserVo){
+
+        int flag = userService.saveUser(saveUserVo);
+
+        if(flag >= 0){
+            return new RestResult().success();
+        }else{
+            return new RestResult().error("保存失败");
+        }
     }
 }
